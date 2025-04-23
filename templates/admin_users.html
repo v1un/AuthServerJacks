@@ -1,0 +1,38 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Manage Users - Auth Server</title>
+    <link rel="stylesheet" href="/static/css/styles.css">
+</head>
+<body>
+    <header>
+        <h1>User Management</h1>
+    </header>
+    
+    <nav>
+        <a href="/admin">Dashboard</a>
+        <a href="/admin/users">Manage Users</a>
+        <a href="/admin/add-user">Add New User</a>
+        <a href="#" onclick="logout()">Logout</a>
+    </nav>
+    
+    <div class="container">
+        <div class="card">
+            <div class="card-header">All Users</div>
+            <div class="card-body">
+                <div id="usersList">
+                    <p>Loading users...</p>
+                </div>
+                
+                <div style="margin-top: 20px;">
+                    <a href="/admin/add-user" class="btn">Add New User</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <script src="/static/js/admin.js"></script>
+</body>
+</html>

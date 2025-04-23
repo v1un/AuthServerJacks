@@ -1,0 +1,21 @@
+﻿# Rust output directory
+/target
+
+# Environment variables
+.env
+
+# Database files
+*.db
+*.db-shm
+*.db-wal
+
+# IDE files
+.idea/
+.vscode/
+
+# Logs
+*.log
+
+# System files
+.DS_Store
+Thumbs.db

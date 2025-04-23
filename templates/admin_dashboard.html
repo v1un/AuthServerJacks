@@ -1,0 +1,73 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard - Auth Server</title>
+    <link rel="stylesheet" href="/static/css/styles.css">
+</head>
+<body>
+    <header>
+        <h1>Admin Dashboard</h1>
+    </header>
+    
+    <nav>
+        <a href="/admin">Dashboard</a>
+        <a href="/admin/users">Manage Users</a>
+        <a href="/admin/add-user">Add New User</a>
+        <a href="#" onclick="logout()">Logout</a>
+    </nav>
+    
+    <div class="container">
+        <div class="card">
+            <div class="card-header">Dashboard</div>
+            <div class="card-body">
+                <h2>Welcome to the Admin Panel</h2>
+                <p>Use the navigation above to manage users and system configurations.</p>
+                
+                <div class="stats-container">
+                    <div class="stat-card">
+                        <div id="userCount">-</div>
+                        <h4>Total Users</h4>
+                    </div>
+                </div>
+                
+                <div style="margin-top: 20px;">
+                    <h3>Quick Actions</h3>
+                    <div style="margin-top: 10px;">
+                        <a href="/admin/add-user" class="btn">Add New User</a>
+                        <a href="/admin/users" class="btn">Manage Users</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <script src="/static/js/admin.js"></script>
+    <script>
+        // Load user count for dashboard
+        document.addEventListener('DOMContentLoaded', async function() {
+            const token = localStorage.getItem('adminToken');
+            if (!token) {
+                window.location.href = '/admin/login';
+                return;
+            }
+            
+            try {
+                const response = await fetch('/api/admin/users', {
+                    headers: {
+                        'Authorization': `Bearer ${token}`
+                    }
+                });
+                
+                if (response.ok) {
+                    const users = await response.json();
+                    document.getElementById('userCount').textContent = users.length;
+                }
+            } catch (error) {
+                console.error('Error loading user count:', error);
+            }
+        });
+    </script>
+</body>
+</html>
