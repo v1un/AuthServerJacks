@@ -1,0 +1,2 @@
+# AuthServerJacks
+AuthServer for JackBotGUI
